@@ -66,10 +66,10 @@ if st.button('Estimasi Harga'):
 st.markdown("""
 ---
 <div style='text-align: center; font-size: 14px; color: gray;'>
-© 2025 Estimasi Harga Mobil Bekas — Dibuat oleh Refah Rantisi<br>
-Semua hak cipta dilindungi.
+© 2025 Estimasi Harga Mobil Bekas — Dikerjakan oleh Refah Rantisi (24523269)<br>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
