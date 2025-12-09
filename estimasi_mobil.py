@@ -58,8 +58,7 @@ if st.button('Estimasi Harga'):
 
     st.subheader('Hasil Estimasi')
 
-    st.write(f"Estimasi harga mobil bekas dalam Pounds: £{predict:,.2f}")
-
     harga_idr = predict * 19000
     st.write(f"Estimasi harga mobil bekas dalam Rupiah: Rp {harga_idr:,.0f}")
+
 
