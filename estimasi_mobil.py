@@ -26,14 +26,14 @@ import streamlit as st
 # Load model
 model = pickle.load(open('estimasi_mobil.sav', 'rb'))
 
-st.title('Estimasi Harga Mobil Bekas (Versi Indonesia)')
+st.title('Estimasi Harga Mobil Bekas')
 
 # Input pengguna (dalam konteks Indonesia)
 year = st.number_input('Tahun Mobil', min_value=1990, max_value=2025)
-km = st.number_input('Jarak Tempuh (dalam KM)')
-tax_idr = st.number_input('Pajak Mobil (dalam Rupiah)')
+km = st.number_input('Jarak Tempuh Odometer')
+tax_idr = st.number_input('Pajak Mobil)')
 kml = st.number_input('Konsumsi BBM (KM per Liter)')
-engine_cc = st.number_input('Kapasitas Mesin (dalam CC)')
+engine_cc = st.number_input('Kapasitas Mesin (CC)')
 
 predict = ''
 
@@ -62,3 +62,4 @@ if st.button('Estimasi Harga'):
 
     harga_idr = predict * 19000
     st.write(f"Estimasi harga mobil bekas dalam Rupiah: Rp {harga_idr:,.0f}")
+
