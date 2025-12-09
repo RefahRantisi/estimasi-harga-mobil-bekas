@@ -62,3 +62,14 @@ if st.button('Estimasi Harga'):
     st.write(f"Estimasi harga mobil bekas dalam Rupiah: Rp {harga_idr:,.0f}")
 
 
+# --- Footer / Copyright ---
+st.markdown("""
+---
+<div style='text-align: center; font-size: 14px; color: gray;'>
+© 2025 Estimasi Harga Mobil Bekas — Dibuat oleh Refah Rantisi<br>
+Semua hak cipta dilindungi.
+</div>
+""", unsafe_allow_html=True)
+
+
+
