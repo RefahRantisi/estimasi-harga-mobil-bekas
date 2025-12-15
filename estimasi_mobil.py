@@ -23,15 +23,20 @@
 import pickle
 import streamlit as st
 
+st.set_page_config(
+    page_title="Estimasi Harga Mobil Bekas",
+    layout="centered"
+)
+
 model = pickle.load(open('estimasi_mobil.sav', 'rb'))
 
 st.title('Estimasi Harga Mobil Bekas')
 
-year = st.number_input('Tahun Mobil', min_value=1990, max_value=2025)
-km = st.number_input('Jarak Tempuh Odometer')
-tax_idr = st.number_input('Pajak Mobil (IDR)')
-kml = st.number_input('Konsumsi BBM (KM per Liter)')
-engine_cc = st.number_input('Kapasitas Mesin (CC)')
+year = st.number_input('Tahun Mobil', min_value=1990, max_value=2025, value=2015)
+km = st.number_input('Jarak Tempuh Odometer', value=50000)
+tax_idr = st.number_input('Pajak Mobil (IDR)', value=3000000)
+kml = st.number_input('Konsumsi BBM (KM per Liter)', value=12.0)
+engine_cc = st.number_input('Kapasitas Mesin (CC)', value=1500)
 
 if st.button('Estimasi Harga'):
     mileage_miles = km / 1.60934
@@ -47,7 +52,8 @@ if st.button('Estimasi Harga'):
     st.subheader('Hasil Estimasi')
     st.write(f"Estimasi harga mobil bekas: Rp {harga_idr:,.0f}")
 
-st.write("© 2025 Estimasi Harga Mobil Bekas — Dikerjakan oleh Refah Rantisi (24523269)")
+st.write("© 2025 Estimasi Harga Mobil Bekas")
+
 
 
 
