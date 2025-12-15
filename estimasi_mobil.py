@@ -52,7 +52,8 @@ if st.button('Estimasi Harga'):
     st.subheader('Hasil Estimasi')
     st.write(f"Estimasi harga mobil bekas: Rp {harga_idr:,.0f}")
 
-st.write("© 2025 Estimasi Harga Mobil Bekas")
+st.write("© 2025 Estimasi Harga Mobil Bekas — Dikerjakan oleh Refah Rantisi (24523269)")
+
 
 
 
