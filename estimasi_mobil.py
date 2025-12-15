@@ -23,52 +23,33 @@
 import pickle
 import streamlit as st
 
-# Load model
 model = pickle.load(open('estimasi_mobil.sav', 'rb'))
 
 st.title('Estimasi Harga Mobil Bekas')
 
-# Input pengguna (dalam konteks Indonesia)
 year = st.number_input('Tahun Mobil', min_value=1990, max_value=2025)
 km = st.number_input('Jarak Tempuh Odometer')
-tax_idr = st.number_input('Pajak Mobil)')
+tax_idr = st.number_input('Pajak Mobil (IDR)')
 kml = st.number_input('Konsumsi BBM (KM per Liter)')
 engine_cc = st.number_input('Kapasitas Mesin (CC)')
 
-predict = ''
-
-# --- Konversi ke format Inggris sesuai model ---
-# 1. Mileage: KM → MILES (1 mile = 1.60934 km)
-mileage_miles = km / 1.60934
-
-# 2. Tax: IDR → POUND (misal 1 pound = 19.000 IDR)
-tax_pound = tax_idr / 19000
-
-# 3. Fuel consumption: KM/L → MPG (1 kml = 2.35215 mpg)
-mpg = kml * 2.35215
-
-# 4. Engine size: CC → Liter
-engine_liter = engine_cc / 1000
-
-# --- Prediksi ---
 if st.button('Estimasi Harga'):
+    mileage_miles = km / 1.60934
+    tax_pound = tax_idr / 19000
+    mpg = kml * 2.35215
+    engine_liter = engine_cc / 1000
+
     predict = model.predict(
         [[year, mileage_miles, tax_pound, mpg, engine_liter]]
     )[0]
 
-    st.subheader('Hasil Estimasi')
-
     harga_idr = predict * 19000
-    st.write(f"Estimasi harga mobil bekas dalam Rupiah: Rp {harga_idr:,.0f}")
+    st.subheader('Hasil Estimasi')
+    st.write(f"Estimasi harga mobil bekas: Rp {harga_idr:,.0f}")
+
+st.write("© 2025 Estimasi Harga Mobil Bekas — Dikerjakan oleh Refah Rantisi (24523269)")
 
 
-# --- Footer / Copyright ---
-st.markdown("""
----
-<div style='text-align: center; font-size: 14px; color: gray;'>
-© 2025 Estimasi Harga Mobil Bekas — Dikerjakan oleh Refah Rantisi (24523269)<br>
-</div>
-""", unsafe_allow_html=True)
 
 
 
